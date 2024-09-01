@@ -8,12 +8,16 @@ import Login from "./routes/login/login.jsx";
 import Register from "./routes/register/register.jsx";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage.jsx";
 import toast, { Toaster } from "react-hot-toast";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 function App() {
+  const isFirstMount = useRef(true);
+
   useEffect(() => {
-    const notify = () => toast("This website is under development !");
-    notify();
+    if (isFirstMount.current) {
+      toast("This website is under development!");
+      isFirstMount.current = false;
+    }
   }, []);
 
   const router = createBrowserRouter([
@@ -50,12 +54,10 @@ function App() {
         {
           path: "/profile",
           element: <ProfilePage />,
-          children: [
-            {
-              path: "/profile/update",
-              element: <ProfileUpdatePage />,
-            },
-          ],
+        },
+        {
+          path: "/profile/update",
+          element: <ProfileUpdatePage />,
         },
       ],
     },
