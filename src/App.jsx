@@ -6,8 +6,16 @@ import SinglePage from "./routes/singlePage/singlePage.jsx";
 import ProfilePage from "./routes/profilePage/profilePage.jsx";
 import Login from "./routes/login/login.jsx";
 import Register from "./routes/register/register.jsx";
+import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage.jsx";
+import toast, { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const notify = () => toast("This website is under development !");
+    notify();
+  }, []);
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -42,12 +50,23 @@ function App() {
         {
           path: "/profile",
           element: <ProfilePage />,
+          children: [
+            {
+              path: "/profile/update",
+              element: <ProfileUpdatePage />,
+            },
+          ],
         },
       ],
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <Toaster />
+    </>
+  );
 }
 
 export default App;
