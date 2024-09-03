@@ -29,8 +29,10 @@ function Navbar() {
           </div>
         ) : (
           <>
-            <Link to="/login">Sign in</Link>
-            <Link to="/register" className="register">
+            <Link to="/login" className="z-[1000]">
+              Sign in
+            </Link>
+            <Link to="/register" className="register z-[1000]">
               Sign up
             </Link>
           </>

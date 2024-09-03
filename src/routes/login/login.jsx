@@ -16,7 +16,7 @@ function Login() {
     e.preventDefault();
     setIsLoading(true);
     const formData = new FormData(e.target);
-    const { username, password } = {
+    const { username, email, password } = {
       username: formData.get("username"),
       email: formData.get("email"),
       password: formData.get("password"),
