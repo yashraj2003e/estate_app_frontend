@@ -42,8 +42,18 @@ function Login() {
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
           <h1>Welcome back</h1>
-          <input name="username" type="text" placeholder="Username" />
-          <input name="password" type="password" placeholder="Password" />
+          <input
+            name="username"
+            type="text"
+            placeholder="Username"
+            defaultValue={"Guest123"}
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            defaultValue={123}
+          />
           <button disabled={isLoading}>Login</button>
           {error && <span>{error}</span>}
           <Link to="/register">{"Don't"} you have an account?</Link>

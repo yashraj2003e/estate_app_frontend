@@ -30,7 +30,7 @@ function Navbar() {
         ) : (
           <>
             <Link to="/login" style={{ zIndex: 10000 }}>
-              Sign in
+              (Guest) Sign in
             </Link>
             <Link to="/register" className="register">
               Sign up
