@@ -6,9 +6,11 @@ import SinglePage from "./routes/singlePage/singlePage.jsx";
 import ProfilePage from "./routes/profilePage/profilePage.jsx";
 import Login from "./routes/login/login.jsx";
 import Register from "./routes/register/register.jsx";
+import NewPostPage from "./routes/newPostPage/newPostPage.jsx";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage.jsx";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect, useRef } from "react";
+import { singlePageLoader } from "./lib/loaders.js";
 
 function App() {
   const isFirstMount = useRef(true);
@@ -36,6 +38,7 @@ function App() {
         {
           path: "/:id",
           element: <SinglePage />,
+          loader: singlePageLoader,
         },
         {
           path: "/login",
@@ -58,6 +61,10 @@ function App() {
         {
           path: "/profile/update",
           element: <ProfileUpdatePage />,
+        },
+        {
+          path: "/add",
+          element: <NewPostPage />,
         },
       ],
     },
