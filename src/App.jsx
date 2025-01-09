@@ -10,7 +10,7 @@ import NewPostPage from "./routes/newPostPage/newPostPage.jsx";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage.jsx";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect, useRef } from "react";
-import { singlePageLoader } from "./lib/loaders.js";
+import { listPageLoader, singlePageLoader } from "./lib/loaders.js";
 
 function App() {
   const isFirstMount = useRef(true);
@@ -34,6 +34,7 @@ function App() {
         {
           path: "/list",
           element: <ListPage />,
+          loader: listPageLoader,
         },
         {
           path: "/:id",
