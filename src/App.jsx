@@ -1,27 +1,30 @@
-import HomePage from "./routes/homePage/homePage.jsx";
+import React, { Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ListPage from "./routes/listPage/listPage.jsx";
 import { Layout, RequireAuth } from "./routes/layout/layout";
-import SinglePage from "./routes/singlePage/singlePage.jsx";
-import ProfilePage from "./routes/profilePage/profilePage.jsx";
-import Login from "./routes/login/login.jsx";
-import Register from "./routes/register/register.jsx";
-import NewPostPage from "./routes/newPostPage/newPostPage.jsx";
-import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage.jsx";
-import toast, { Toaster } from "react-hot-toast";
-import { useEffect, useRef } from "react";
-import { listPageLoader, singlePageLoader } from "./lib/loaders.js";
+import {
+  listPageLoader,
+  profilePageLoader,
+  singlePageLoader,
+} from "./lib/loaders.js";
+
+const HomePage = React.lazy(() => import("./routes/homePage/homePage.jsx"));
+const ListPage = React.lazy(() => import("./routes/listPage/listPage.jsx"));
+const SinglePage = React.lazy(() =>
+  import("./routes/singlePage/singlePage.jsx")
+);
+const ProfilePage = React.lazy(() =>
+  import("./routes/profilePage/profilePage.jsx")
+);
+const Login = React.lazy(() => import("./routes/login/login.jsx"));
+const Register = React.lazy(() => import("./routes/register/register.jsx"));
+const NewPostPage = React.lazy(() =>
+  import("./routes/newPostPage/newPostPage.jsx")
+);
+const ProfileUpdatePage = React.lazy(() =>
+  import("./routes/profileUpdatePage/profileUpdatePage.jsx")
+);
 
 function App() {
-  const isFirstMount = useRef(true);
-
-  useEffect(() => {
-    if (isFirstMount.current) {
-      toast("This website is under development!");
-      isFirstMount.current = false;
-    }
-  }, []);
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -58,6 +61,7 @@ function App() {
         {
           path: "/profile",
           element: <ProfilePage />,
+          loader: profilePageLoader,
         },
         {
           path: "/profile/update",
@@ -72,10 +76,9 @@ function App() {
   ]);
 
   return (
-    <>
+    <Suspense fallback={<p>Loading...</p>}>
       <RouterProvider router={router} />
-      <Toaster />
-    </>
+    </Suspense>
   );
 }
 

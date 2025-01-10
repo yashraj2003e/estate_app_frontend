@@ -11,7 +11,7 @@
   .item {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 6px;
 
     label {
       font-size: 10px;
@@ -27,28 +27,34 @@
     }
   }
 
-  .top {
-    input {
-      width: 100%;
-    }
-  }
-
-  .bottom {
+  form {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
 
-    button {
-      width: 100px;
-      padding: 10px;
-      border: none;
-      cursor: pointer;
-      background-color: #fece51;
+    .top {
+      input {
+        width: 100%;
+      }
+    }
 
-      img {
-        width: 24px;
-        height: 24px;
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      button {
+        width: 100px;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        background-color: #fece51;
+
+        img {
+          width: 24px;
+          height: 24px;
+        }
       }
     }
   }

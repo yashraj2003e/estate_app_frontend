@@ -69,21 +69,25 @@
         border: 1px solid #999;
       }
     }
-
-    button {
-      border: none;
-      cursor: pointer;
+    a {
       background-color: #fece51;
       flex: 1;
-      height: 100%;
-      width: 5rem;
-      @include sm {
-        padding: 10px;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      img {
-        width: 24px;
-        height: 24px;
+      button {
+        background-color: #fece51;
+        border: none;
+        cursor: pointer;
+        @include sm {
+          padding: 10px;
+        }
+
+        img {
+          width: 24px;
+          height: 24px;
+        }
       }
     }
   }

@@ -32,7 +32,7 @@ function Filter() {
           </p>
         )}
       </h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="top">
           <div className="item">
             <label htmlFor="city">Location</label>
@@ -112,7 +112,7 @@ function Filter() {
             />
           </div>
 
-          <button type="submit">
+          <button type="submit" onClick={handleSubmit}>
             <img src="/search.png" alt="" />
           </button>
         </div>
